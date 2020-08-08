@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 /**
@@ -11,10 +6,10 @@ package model;
  */
 public class Model {
 
-    private Double confidence;
+    private double confidence;
     private int category;
-    private Double credits;
-    private Double probability;
+    private double credits;
+    private double probability;
 
     private int Age;
     private int Anaemia;
@@ -23,16 +18,16 @@ public class Model {
     private int Ejection_fraction;
     private int High_blood_pressure;
     private int Platelets;
-    private int Serum_creatinine;
+    private double Serum_creatinine;
     private int Serum_sodium;
     private int Sex;
     private int Smoking;
 
-    public Double getConfidence() {
+    public double getConfidence() {
         return confidence;
     }
 
-    public void setConfidence(Double confidence) {
+    public void setConfidence(double confidence) {
         this.confidence = confidence;
     }
 
@@ -44,19 +39,19 @@ public class Model {
         this.category = category;
     }
 
-    public Double getCredits() {
+    public double getCredits() {
         return credits;
     }
 
-    public void setCredits(Double credits) {
+    public void setCredits(double credits) {
         this.credits = credits;
     }
 
-    public Double getProbability() {
+    public double getProbability() {
         return probability;
     }
 
-    public void setProbability(Double probability) {
+    public void setProbability(double probability) {
         this.probability = probability;
     }
 
@@ -116,11 +111,11 @@ public class Model {
         this.Platelets = Platelets;
     }
 
-    public int getSerum_creatinine() {
+    public double getSerum_creatinine() {
         return Serum_creatinine;
     }
 
-    public void setSerum_creatinine(int Serum_creatinine) {
+    public void setSerum_creatinine(double Serum_creatinine) {
         this.Serum_creatinine = Serum_creatinine;
     }
 
@@ -146,6 +141,6 @@ public class Model {
 
     public void setSmoking(int Smoking) {
         this.Smoking = Smoking;
-    }
+    }    
 
 }

@@ -3,14 +3,15 @@ package controller;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import model.Model;
 import services.Services;
 
 @Named(value = "controller")
-@RequestScoped
-public class Controller {
+@ViewScoped
+public class Controller implements Serializable{
     
     private final Services services = new Services();
     private Model model = new Model();
@@ -23,6 +24,7 @@ public class Controller {
         JsonObject jsonObject = (JsonObject) jsonParser.parse(services.datosAPI(json));
         
         model.setConfidence(jsonObject.get("confidence").getAsDouble());
+        System.out.println(jsonObject.get("confidence").getAsDouble());
         model.setCategory(jsonObject.get("category").getAsInt());
         model.setCredits(jsonObject.get("credits").getAsDouble());
         model.setProbability(jsonObject.get("probability").getAsDouble());
@@ -46,7 +48,8 @@ public class Controller {
                 + "    }\n"
                 + "}";
         
-        services.datosAPI(json);
+        String a = services.datosAPI(json);
+        mostarDatos(a);
     }
     
     public Model getModel() {

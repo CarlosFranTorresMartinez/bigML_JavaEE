@@ -8,78 +8,196 @@
     </h:head>
 
     <h:body>
-        <h:form id="predicion">
-            <h:panelGrid  columns="1" style="margin-bottom: 10px">
+        <p:growl showDetail="true" id="msg"/>
+        <div style="width: 95%; margin-left: auto; margin-right: auto;">
+            <h:form id="predicion">
+                <center>
+                    <h1> Regresión Logística - Sobrevive o no? </h1>
+                </center>
+                <p:panelGrid>
+                    <p:row>
+                        <p:column colspan="2" style="font-weight: bold; color: orangered;">
+                            <p:outputLabel value="¿Cuál es su edad?"/>
+                        </p:column>
 
-                <p:outputLabel value="¿Cuál es su edad?"/>
-                <p:inputText id="age" value="#{controller.model.age}"/>
-                <p:slider for="age" minValue="26.25" maxValue="108.75" step="0.1" />
+                        <p:column rowspan="17" style="font-weight: bold;">  </p:column>
 
-                <br/>
-                <p:outputLabel value="¿Tienes anemia?"/>
-                <p:selectOneMenu value="#{controller.model.anaemia}">
-                    <f:selectItem itemValue="0" itemLabel="No tengo"/>
-                    <f:selectItem itemValue="1" itemLabel="Si tengo"/>
-                </p:selectOneMenu>
+                        <p:column style="font-weight: bold; color: orangered;">
+                            <p:outputLabel value="¿Tienes anemia?"/>                
+                        </p:column>
 
-                <br/>
-                <p:outputLabel value="¿Qué cantidad de creatinquinasa tiene?"/>
-                <p:inputText id="cpk" value="#{controller.model.creatinine_phosphokinase}"/>
-                <p:slider for="cpk" minValue="0" maxValue="9820" step="1" />
+                        <p:column rowspan="17" style="font-weight: bold;">  </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:inputText id="age" value="#{controller.model.age}" size="8"/>
+                        </p:column>                    
+                        <p:column>
+                            <p:slider for="age" minValue="20" maxValue="102" step="1" style="width: 220px"/>
+                        </p:column>
 
-                <br/>
-                <p:outputLabel value="¿Tienes diabetes?"/>
-                <p:selectOneMenu value="#{controller.model.diabetes}">
-                    <f:selectItem itemValue="0" itemLabel="No tengo"/>
-                    <f:selectItem itemValue="1" itemLabel="Si tengo"/>
-                </p:selectOneMenu>
+                        <p:column>
+                            <p:selectOneRadio value="#{controller.model.anaemia}">
+                                <f:selectItem itemValue="0" itemLabel="No tengo"/>
+                                <f:selectItem itemValue="1" itemLabel="Si tengo"/>
+                            </p:selectOneRadio>
+                        </p:column>                    
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="4" styleClass="ui-widget-header" style="background: white">
+                            <p:spacer height="0"/>
+                        </p:column>
+                    </p:row>
 
-                <br/>
-                <p:outputLabel value="¿Cuál es su medida de Fracción de eyección tiene?"/>
-                <p:inputText id="ef" value="#{controller.model.ejection_fraction}"/>
-                <p:slider for="ef" minValue="0" maxValue="96" step="1" />
+                    <p:row>
+                        <p:column colspan="2" style="font-weight: bold; color: orangered;">
+                            <p:outputLabel value="¿Qué cantidad de creatinquinasa tiene?"/>                        
+                        </p:column>
 
-                <br/>
-                <p:outputLabel value="¿Sufre de Hipertensión arterial?"/>
-                <p:selectOneMenu value="#{controller.model.high_blood_pressure}">
-                    <f:selectItem itemValue="0" itemLabel="No tengo"/>
-                    <f:selectItem itemValue="1" itemLabel="Si tengo"/>
-                </p:selectOneMenu>
+                        <p:column style="font-weight: bold; color: orangered;">
+                            <p:outputLabel value="¿Tienes diabetes?"/>                
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:inputText id="cpk" value="#{controller.model.creatinine_phosphokinase}" size="8"/>
+                        </p:column>
+                        <p:column>
+                            <p:slider for="cpk" minValue="0" maxValue="9820" step="1" style="width: 220px"/>
+                        </p:column>
 
-                <br/>
-                <p:outputLabel value="¿Qué cantidad de plaquetas tienes?"/>
-                <p:inputText id="pl" value="#{controller.model.platelets}"/>
-                <p:slider for="pl" minValue="0" maxValue="1050750" step="1" />
+                        <p:column>
+                            <p:selectOneRadio value="#{controller.model.diabetes}">
+                                <f:selectItem itemValue="0" itemLabel="No tengo"/>
+                                <f:selectItem itemValue="1" itemLabel="Si tengo"/>
+                            </p:selectOneRadio>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="4" styleClass="ui-widget-header" style="background: white">
+                            <p:spacer height="0"/>
+                        </p:column>
+                    </p:row>
 
-                <br/>
-                <p:outputLabel value="¿Qué cantidad de suero de creatinina tienes?"/>
-                <p:inputText id="sc" value="#{controller.model.serum_creatinine}"/>
-                <p:slider for="sc" minValue="0" maxValue="11.6" step="0.1" />
+                    <p:row>
+                        <p:column colspan="2" style="font-weight: bold; color: orangered;">
+                            <p:outputLabel value="¿Cuál es su medida de Fracción de eyección tiene?"/>
+                        </p:column>
 
-                <br/>
-                <p:outputLabel value="¿Qué cantidad de suero de sodio tienes?"/>
-                <p:inputText id="ss" value="#{controller.model.serum_sodium}"/>
-                <p:slider for="ss" minValue="0" maxValue="156" step="1" />
+                        <p:column style="font-weight: bold; color: orangered;">
+                            <p:outputLabel value="¿Sufre de Hipertensión arterial?"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:inputText id="ef" value="#{controller.model.ejection_fraction}" size="8"/>
+                        </p:column>
+                        <p:column>
+                            <p:slider for="ef" minValue="0" maxValue="100" step="1" style="width: 220px"/>
+                        </p:column>
 
-                <br/>
-                <p:outputLabel value="¿Cuál es tu genero?"/>
-                <p:selectOneMenu value="#{controller.model.sex}">
-                    <f:selectItem itemValue="0" itemLabel="Varón"/>
-                    <f:selectItem itemValue="1" itemLabel="Mujer"/>
-                </p:selectOneMenu>
+                        <p:column>
+                            <p:selectOneRadio value="#{controller.model.high_blood_pressure}">
+                                <f:selectItem itemValue="0" itemLabel="No tengo"/>
+                                <f:selectItem itemValue="1" itemLabel="Si tengo"/>
+                            </p:selectOneRadio>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="4" styleClass="ui-widget-header" style="background: white">
+                            <p:spacer height="0"/>
+                        </p:column>
+                    </p:row>
 
+                    <p:row>
+                        <p:column style="font-weight: bold; color: orangered;" colspan="2">
+                            <p:outputLabel value="¿Qué cantidad de plaquetas tienes?"/>
+                        </p:column>
 
-                <br/>
-                <p:outputLabel value="¿Fumas?"/>
-                <p:selectOneMenu value="#{controller.model.smoking}">
-                    <f:selectItem itemValue="0" itemLabel="No"/>
-                    <f:selectItem itemValue="1" itemLabel="Si"/>
-                </p:selectOneMenu>
+                        <p:column style="font-weight: bold; color: orangered;">
+                            <p:outputLabel value="¿Cuál es tu genero?"/>                
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:inputText id="pl" value="#{controller.model.platelets}" size="8"/>                    
+                        </p:column>
+                        <p:column>
+                            <p:slider for="pl" minValue="0" maxValue="450000" step="1" style="width: 220px"/>
+                        </p:column>
 
-            </h:panelGrid>
+                        <p:column>
+                            <p:selectOneRadio value="#{controller.model.sex}">
+                                <f:selectItem itemValue="0" itemLabel="Varón"/>
+                                <f:selectItem itemValue="1" itemLabel="Mujer"/>
+                            </p:selectOneRadio>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="4" styleClass="ui-widget-header" style="background: white">
+                            <p:spacer height="0"/>
+                        </p:column>
+                    </p:row>
 
-            <p:commandButton value="Ver Resultados" actionListener="#{controller.obtenerDatos()}"
-                             update=":predicion"/>
-        </h:form>
+                    <p:row>
+                        <p:column style="font-weight: bold; color: orangered;" colspan="2">
+                            <p:outputLabel value="¿Qué cantidad de suero de creatinina tienes?"/>
+                        </p:column>
+
+                        <p:column style="font-weight: bold; color: orangered;">
+                            <p:outputLabel value="¿Fumas?"/>                
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column>
+                            <p:inputText id="sc" value="#{controller.model.serum_creatinine}" size="8"/>
+                        </p:column>
+                        <p:column>
+                            <p:slider for="sc" minValue="0" maxValue="11.6" step="0.1" style="width: 220px"/>
+                        </p:column>
+
+                        <p:column>
+                            <p:selectOneRadio value="#{controller.model.smoking}">
+                                <f:selectItem itemValue="0" itemLabel="No"/>
+                                <f:selectItem itemValue="1" itemLabel="Si"/>
+                            </p:selectOneRadio>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="4" styleClass="ui-widget-header"  style="background: white">
+                            <p:spacer height="0"/>
+                        </p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column style="font-weight: bold; color: orangered;" colspan="2">
+                            <p:outputLabel value="¿Qué cantidad de suero de sodio tienes?"/>                        
+                        </p:column>                    
+                    </p:row>                
+                    <p:row>
+                        <p:column>
+                            <p:inputText id="ss" value="#{controller.model.serum_sodium}" size="8"/>                    
+                        </p:column>
+                        <p:column>
+                            <p:slider for="ss" minValue="0" maxValue="156" step="1" style="width: 220px"/>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+                <p:commandButton value="Ver Resultados" actionListener="#{controller.obtenerDatos()}"
+                                 update=":predicion :msg" oncomplete="PF('predice').show();"/>
+            </h:form>
+            <p:dialog widgetVar="predice">
+                <p:panelGrid columns="2">
+                        <h3>Resultados de predicción</h3>
+                        <p:outputLabel value=""/>
+                        <p:outputLabel value="Confidencia: "/>
+                        <p:outputLabel value="#{controller.model.confidence}"/>
+                        <p:outputLabel value="Categoría"/>
+                        <p:outputLabel value="#{controller.model.confidence}"/>
+                        <p:outputLabel value="Probabilidad"/>
+                        <p:outputLabel value="#{controller.model.probability}"/>
+                    </p:panelGrid>
+            </p:dialog>
+        </div>
     </h:body>
 </html>
